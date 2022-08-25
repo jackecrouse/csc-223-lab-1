@@ -12,11 +12,10 @@ public class ArraySet<E> implements List<E>, Set<E>
 {
 	protected ArrayList<E> _list;
 	
+	
 	public ArraySet()
 	{
-		
-		
-		
+		_list = new ArrayList<E>();
 	}
 
 	@Override
@@ -78,14 +77,37 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
+			
+		boolean changed = false; 
 		
-		return _list.addAll(c);
+		for(E item : c)
+		{
+			if(this.add(item))
+			{
+				this.add(item);
+				changed = true;
+			}
+		}
+		
+		return changed;
 	}
+	
 
 	@Override
 	public boolean addAll(int index, Collection<? extends E> c) {
 		
-		return _list.addAll(index, c);
+		boolean changed = false;
+		
+		for(E item: c)
+		{
+			if(this.add(item))
+			{
+				this.add(index, item);
+				changed = true;
+			}
+		}
+		
+		return changed;
 	}
 
 	@Override
@@ -163,7 +185,7 @@ public class ArraySet<E> implements List<E>, Set<E>
 	@Override
 	public Spliterator<E> spliterator() {
 		
-		return List.super.spliterator();
+		return _list.spliterator();
 	}
 	
 }
