@@ -88,6 +88,20 @@ class ArraySetTest<E>
 	@Test
 	void testRemoveAll()
 	{
+		ArraySet<Integer> fullSet = populate(3, 7); 
+		ArraySet<Integer> emptySet = new ArraySet<Integer>();
+	
+		fullSet.removeAll(fullSet);
+		
+		assertTrue(fullSet.isEmpty());
+		
+		assertFalse(emptySet.isEmpty());
+		
+		//test comment
+		
+		
+		
+		
 	}
 
 	@Test
