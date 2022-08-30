@@ -39,6 +39,7 @@ class ArraySetTest<E>
 	void testArraySetCollectionOfE()
 	{
 		
+		
 	}
 
 	@Test
@@ -98,9 +99,6 @@ class ArraySetTest<E>
 		assertFalse(emptySet.isEmpty());
 		
 		//test comment
-		
-		
-		
 		
 	}
 
