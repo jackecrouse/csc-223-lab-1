@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 class ArraySetTest<E>
 {
 	
-	@SuppressWarnings("unchecked")
 	ArraySet<Integer> populate(int low, int high)
 	{
 		ArraySet<Integer> arrySet = new ArraySet<Integer>();
@@ -123,7 +122,6 @@ class ArraySetTest<E>
 		
 		assertFalse(fullSet.removeAll(testSet2));
 		
-				
 	}
 
 	@Test
