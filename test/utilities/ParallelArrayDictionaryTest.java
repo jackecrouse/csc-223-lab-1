@@ -55,6 +55,8 @@ class ParallelArrayDictionaryTest
 		
 		assertEquals(dict.remove(1), "a");
 		
+		assertFalse(dict.containsKey(1));
+		
 		assertEquals(dict.remove(5), null);
 	}
 
