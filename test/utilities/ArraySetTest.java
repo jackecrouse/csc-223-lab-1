@@ -2,6 +2,8 @@ package utilities;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class ArraySetTest<E>
@@ -38,7 +40,16 @@ class ArraySetTest<E>
 	@Test
 	void testArraySetCollectionOfE()
 	{
+		ArrayList<Integer> arry = new ArrayList<Integer>(); 
 		
+		for(int i = 1; i <= 10; i++)
+		{
+			arry.add(i);
+		}
+		
+		ArraySet<Integer> arrySet = new ArraySet<Integer>(arry); 
+		
+		assertEquals("[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]", toString(arrySet));
 		
 	}
 
@@ -65,6 +76,17 @@ class ArraySetTest<E>
 	@Test
 	void testAddAllCollectionOfQextendsE()
 	{
+		ArraySet<Integer> fullSet = populate(1, 5); 
+		ArraySet<Integer> addSet = populate(3, 7);
+		
+		fullSet.addAll(addSet);
+		
+		assertEquals("[1, 2, 3, 4, 5, 6, 7]", toString(fullSet));
+		
+		fullSet.addAll(populate(8,10));
+		
+		assertEquals("[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]", toString(fullSet));
+
 	}
 
 	@Test
@@ -101,13 +123,28 @@ class ArraySetTest<E>
 		
 		assertFalse(fullSet.removeAll(testSet2));
 		
-		
-		//test comment
-		
+				
 	}
 
 	@Test
 	void testAddAllIntCollectionOfQextendsE()
 	{
+		ArraySet<Integer> fullSet = populate(-1, 5); 
+		ArraySet<Integer> subSet = populate(3, 7); 
+		
+		fullSet.addAll(5, subSet);
+		
+		assertEquals("[-1, 0, 1, 2, 3, 4, 5, 6, 7]", toString(fullSet));
+
+		ArraySet<Integer> testSet = new ArraySet<Integer>();
+		
+		testSet.add(-5);
+		testSet.add(1);
+		testSet.add(3);
+		testSet.add(5);
+		
+		testSet.addAll(2, populate(4, 9));
+		assertEquals("[-5, 1, 3, 5, 4, 6, 7, 8, 9]", toString(testSet));
+		
 	}
 }
