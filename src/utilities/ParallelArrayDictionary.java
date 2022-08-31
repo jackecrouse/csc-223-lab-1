@@ -2,6 +2,7 @@ package utilities;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
@@ -14,8 +15,9 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	{
 		_keys = new ArraySet<Key>();
 		_values = new ArraySet<Value>(); 
+		
 	}
-
+	
 
 	@Override
 	public int size() {
