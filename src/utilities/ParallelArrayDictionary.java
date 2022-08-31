@@ -52,6 +52,9 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		// TODO Auto-generated method stub
 
 		int index = _keys.indexOf(key);
+		
+		if(index == -1) {return null;}
+
 		return _values.get(index);
 	}
 	

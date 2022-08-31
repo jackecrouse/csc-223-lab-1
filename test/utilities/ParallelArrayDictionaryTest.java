@@ -42,8 +42,6 @@ class ParallelArrayDictionaryTest
 		assertTrue(dict.containsValue("b"));
 		
 		assertTrue(dict.containsKey(4));
-		
-		
 	}
 
 	@Test
@@ -58,8 +56,6 @@ class ParallelArrayDictionaryTest
 		assertEquals(dict.remove(1), "a");
 		
 		assertEquals(dict.remove(5), null);
-		
-		
 	}
 
 	@Test
