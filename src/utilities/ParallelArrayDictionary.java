@@ -102,10 +102,15 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
 		
-		for(Key key : m.keySet())
+		for(Entry<? extends Key, ? extends Value> entry : m.entrySet())
 		{
-			this.put(key, m.get(key));
+			this.put(entry.getKey(), entry.getValue());
 		}
+		
+//		for(Key key : m.keySet())
+//		{
+//			this.put(key, m.get(key));
+//		}
 	}
 
 
@@ -126,7 +131,6 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Set<Map.Entry<Key, Value>> entrySet() {
 		// TODO Auto-generated method stub
