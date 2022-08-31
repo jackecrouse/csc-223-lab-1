@@ -21,7 +21,9 @@ class ParallelArrayDictionaryTest
 		dict.put(1,"a");
 		dict.put(2,"b");
 		
+		assertEquals(dict.get(1), "a");
 		
+		assertEquals(dict.get(6), null);
 	}
 
 	@Test
