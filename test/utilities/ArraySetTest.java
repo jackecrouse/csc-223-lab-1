@@ -90,13 +90,17 @@ class ArraySetTest<E>
 	void testRemoveAll()
 	{
 		ArraySet<Integer> fullSet = populate(3, 7); 
-		ArraySet<Integer> emptySet = new ArraySet<Integer>();
+		ArraySet<Integer> testSet = populate(5, 7);
+		ArraySet<Integer> testSet2 = populate(8, 9);
 	
-		fullSet.removeAll(fullSet);
+		assertTrue(fullSet.removeAll(testSet));
 		
-		assertTrue(fullSet.isEmpty());
+		assertTrue(fullSet.contains(3));
 		
-		assertFalse(emptySet.isEmpty());
+		assertFalse(fullSet.contains(6));
+		
+		assertFalse(fullSet.removeAll(testSet2));
+		
 		
 		//test comment
 		
