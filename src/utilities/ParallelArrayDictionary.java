@@ -1,28 +1,21 @@
 package utilities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
+import java.util.AbstractMap;
 
 public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 {
 	protected ArraySet<Key> _keys;
-	protected ArraySet<Value> _values;
+	protected ArrayList<Value> _values;
 	
 
 	public ParallelArrayDictionary()
 	{
 		_keys = new ArraySet<Key>();
-		_values = new ArraySet<Value>(); 
-		
-	}
-	
-	
-	public ParallelArrayDictionary(ArraySet<Key> keys, ArraySet<Value> values)
-	{
-		_keys = keys;
-		_values = values;
+		_values = new ArrayList<Value>(); 
 	}
 	
 
@@ -60,7 +53,7 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 		int index = _keys.indexOf(key);
 		
-		if(index == -1) {return null;}
+		if(index == -1) return null;
 
 		return _values.get(index);
 	}
@@ -135,12 +128,17 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Set<Entry<Key, Value>> entrySet() {
+	public Set<Map.Entry<Key, Value>> entrySet() {
 		// TODO Auto-generated method stub
-		return (Set<Entry<Key, Value>>) this;
+		Set<Map.Entry<Key, Value>> res = new ArraySet<>(); 
+		
+		for(int i = 0; i < _keys.size(); i++)
+		{
+			res.add(new AbstractMap.SimpleEntry<>(_keys.get(i), _values.get(i)));
+		}
+		
+		return res; 
 	}
 	
 	
-	
-
 }

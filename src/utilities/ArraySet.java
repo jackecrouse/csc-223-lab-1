@@ -20,7 +20,7 @@ public class ArraySet<E> implements List<E>, Set<E>
 	
 	public ArraySet(ArrayList<E> arry)
 	{
-		_list = arry;
+		_list = new ArrayList<E>(arry);
 	}
 	
 	@Override
@@ -89,7 +89,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 		{
 			if(this.add(item))
 			{
-				this.add(item);
 				changed = true;
 			}
 		}
@@ -104,14 +103,14 @@ public class ArraySet<E> implements List<E>, Set<E>
 		boolean changed = false;
 		
 		for(E item: c)
-		{
-			if(this.add(item))
+		{			
+			if(!this.contains(item)) 
 			{
 				this.add(index, item);
 				changed = true;
+				index++;
 			}
 		}
-		
 		return changed;
 	}
 

@@ -12,15 +12,10 @@ class ParallelArrayDictionaryTest
 	@Test
 	void testParallelArrayDictionary()
 	{
-		ArraySet<Integer> keys = new ArraySet<Integer>();
-		ArraySet<String> values = new ArraySet<String>();
+		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>();
 
-		keys.add(1);
-		values.add("a");
-		keys.add(2);
-		values.add("b");
-
-		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>(keys, values); 
+		dict.put(1, "a");
+		dict.put(2, "b");
 
 		assertTrue(dict.containsKey(1));
 		assertTrue(dict.containsKey(2));
