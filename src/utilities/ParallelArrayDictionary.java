@@ -18,6 +18,13 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 		
 	}
 	
+	
+	public ParallelArrayDictionary(ArraySet<Key> keys, ArraySet<Value> values)
+	{
+		_keys = keys;
+		_values = values;
+	}
+	
 
 	@Override
 	public int size() {

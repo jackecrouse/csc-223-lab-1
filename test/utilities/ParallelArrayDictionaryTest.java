@@ -8,10 +8,26 @@ import org.junit.jupiter.api.Test;
 
 class ParallelArrayDictionaryTest
 {
+
 	@Test
 	void testParallelArrayDictionary()
 	{
+		ArraySet<Integer> keys = new ArraySet<Integer>();
+		ArraySet<String> values = new ArraySet<String>();
+
+		keys.add(1);
+		values.add("a");
+		keys.add(2);
+		values.add("b");
+
+		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer, String>(keys, values); 
+
+		assertTrue(dict.containsKey(1));
+		assertTrue(dict.containsKey(2));
 		
+		assertEquals("a", dict.get(1));
+		assertEquals("b", dict.get(2));
+
 	}
 
 	@Test
@@ -20,9 +36,9 @@ class ParallelArrayDictionaryTest
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer,String>();
 		dict.put(1,"a");
 		dict.put(2,"b");
-		
+
 		assertEquals(dict.get(1), "a");
-		
+
 		assertEquals(dict.get(6), null);
 	}
 
@@ -34,13 +50,13 @@ class ParallelArrayDictionaryTest
 		dict.put(2,"b");
 		dict.put(3,"c");
 		dict.put(4,"d");
-		
+
 		assertEquals(dict.put(1 , "z"), "a");
-		
+
 		assertEquals(dict.put(8, "z"), null);
-		
+
 		assertTrue(dict.containsValue("b"));
-		
+
 		assertTrue(dict.containsKey(4));
 	}
 
@@ -52,9 +68,9 @@ class ParallelArrayDictionaryTest
 		dict.put(2,"b");
 		dict.put(3,"c");
 		dict.put(4,"d");
-		
+
 		assertEquals(dict.remove(1), "a");
-		
+
 		assertEquals(dict.remove(5), null);
 	}
 
@@ -63,21 +79,21 @@ class ParallelArrayDictionaryTest
 	{
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer,String>();
 		ParallelArrayDictionary<Integer, String> testDict = new ParallelArrayDictionary<Integer,String>();
-		
+
 		dict.put(1,"a");
 		dict.put(2,"b");
 		testDict.put(1,"a");
 		testDict.put(2,"b");
 		testDict.put(3,"c");
 		testDict.put(4,"d");
-		
+
 		dict.putAll(testDict);
 		assertTrue(dict.containsKey(3));
-		
+
 		assertTrue(dict.containsValue("d"));
-		
+
 		assertTrue(dict.containsKey(1));
-		
+
 		assertTrue(dict.containsValue("b"));
 	}
 
@@ -85,16 +101,16 @@ class ParallelArrayDictionaryTest
 	void testClear()
 	{
 		ParallelArrayDictionary<Integer, String> dict = new ParallelArrayDictionary<Integer,String>();
-		
+
 		dict.put(1,"a");
 		dict.put(2,"b");
-		
+
 		dict.clear();
-		
+
 		assertFalse(dict.containsKey(1));
-		
+
 		assertFalse(dict.containsValue("a"));
-		
-		
+
+
 	}
 }
